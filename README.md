@@ -20,4 +20,33 @@
 - `docs:` 문서 수정  
 - `test:` 테스트 코드 추가  
 
-예시:
+## ⚙️ Local Environment Setup (using Conda)
+
+모든 팀원이 동일한 개발 환경에서 FastAPI를 실행하기 위한 설정 가이드입니다.
+
+### 🧱 Step-by-Step
+
+```bash
+# 1️⃣ Conda 환경 생성 (이름은 프로젝트에 맞게 변경 가능)
+conda create -n gitTest python=3.10
+
+# 2️⃣ Conda 환경 활성화
+conda activate gitTest
+
+# 3️⃣ 필수 패키지 설치
+pip install fastapi uvicorn
+
+# (필요 시 추가 패키지 예시)
+# pip install numpy pandas scikit-learn
+
+# 4️⃣ 현재 환경을 environment.yml로 저장
+conda env export > environment.yml
+
+# 5️⃣ 다른 팀원이 동일한 환경 생성 시
+conda env create -f environment.yml
+
+# (기존 환경 업데이트 시)
+# conda env update -f environment.yml --prune
+
+# 6️⃣ FastAPI 실행 테스트
+uvicorn main:app --reload
